@@ -12,21 +12,11 @@ public class Main {
         String username = sc.nextLine();
         System.out.println("Enter a sequence of numbers");
         String sequence = sc.nextLine();
-        ArrayList<String> numbers = findPrimeNumbers(sequence);
         System.out.println("Username:" + username);
-        System.out.print("Prime Numbers in sequence: ");
-        for (int i=0; i<numbers.size()-1; i++){
-            System.out.print(numbers.get(i) + ",");
-        }
-        System.out.print(numbers.getLast());
-
-
-
-
-
+        System.out.println(findPrimeNumbers(sequence));
     }
 
-    public static ArrayList<String> findPrimeNumbers(String sequence) throws Exception {
+    public static String findPrimeNumbers(String sequence) throws Exception {
         ArrayList<String> finalNumbers = new ArrayList<>();
         if (sequence.matches(".*[a-z].*")){
             throw new Exception("Sequence should not contain letters");
@@ -60,7 +50,12 @@ public class Main {
             }
             bw.close();
         }
-        return finalNumbers;
+        String message = "Prime Numbers in sequence: ";
+        for (int i=0; i<finalNumbers.size()-1; i++){
+            message += finalNumbers.get(i) + ",";
+        }
+        message += finalNumbers.getLast();
+        return message;
     }
 
     public static boolean isPrime(int a){
