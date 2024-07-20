@@ -53,6 +53,19 @@ public class findPrimeNumbersTesting {
     }
 
     @Test
+    public void testFindPrimeNumbersSpecialChar() {
+        try {
+            String sequence = "12@";
+            String numbers = Main.findPrimeNumbers(sequence);
+
+        } catch(Exception e) {
+            assertEquals("Sequence should not contain special characters", e.getMessage());
+
+        }
+
+    }
+
+    @Test
     public void testZeroisPrime() throws Exception {
         int num = 0;
         boolean prime = Main.isPrime(num);
