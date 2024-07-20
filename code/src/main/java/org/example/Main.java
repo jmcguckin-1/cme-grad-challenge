@@ -56,8 +56,11 @@ public class Main {
                                 Logs.log(Level.INFO, "File Created for First Time");
                             }
                             else{
-                                bw.write(substr);
-                                bw.newLine();
+                                FileManipulation fm = new FileManipulation("primenumbers.txt");
+                                if (fm.insertUnique(substr)){
+                                    bw.write(substr);
+                                    bw.newLine();
+                                }
                                 Logs.log(Level.INFO, "Appending numbers to file");
                             }
                         }
