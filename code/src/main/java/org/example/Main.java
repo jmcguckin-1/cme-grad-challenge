@@ -1,7 +1,6 @@
 package org.example;
 import java.util.*;
 import java.io.File;
-import java.io.IOException;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.util.logging.Level;
