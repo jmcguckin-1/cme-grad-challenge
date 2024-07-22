@@ -15,6 +15,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a username");
         String username = sc.nextLine();
+        if (username.isEmpty()){
+            throw new Exception("Username cannot be blank");
+        }
         System.out.println("Enter a sequence of numbers");
         String sequence = sc.nextLine();
         System.out.println("Username:" + username);
@@ -47,7 +50,7 @@ public class Main {
             Logs.log(Level.WARNING, "Incorrect sequence - special characters included");
             throw new Exception("Sequence should not contain special characters");
         }
-        else if (sequence.matches(".*[a-z].*")){
+        else if (sequence.matches("[a-zA-Z]+")){
             Logs.log(Level.WARNING, "Incorrect sequence - letters included");
             throw new Exception("Sequence should not contain letters");
         }
@@ -71,21 +74,14 @@ public class Main {
                                 finalNumbers.add(substr); // adds to cache
                                 updatedCache.add(substr);
                                 Logs.log(Level.INFO, "Prime Number Found and Added to Cache");
-                                if (f.createNewFile()){
+                                FileManipulation fm = new FileManipulation("primenumbers.txt");
+                                // writes unique values to file
+                                if (fm.insertUnique(substr) && f.exists()){
                                     bw.write(substr);
                                     bw.newLine();
-                                    Logs.log(Level.INFO, "File Created for First Time");
                                 }
-                                else{
-                                    FileManipulation fm = new FileManipulation("primenumbers.txt");
-                                    // writes unique values to file
-                                    if (fm.insertUnique(substr) && f.exists()){
-                                        bw.write(substr);
-                                        bw.newLine();
-                                    }
-                                    Logs.log(Level.INFO, "Appending numbers to file");
+                                Logs.log(Level.INFO, "Appending numbers to file");
                                 }
-                            }
                         }
                         else if (sequence.contains(substr)){
                             updatedCache.add(substr);

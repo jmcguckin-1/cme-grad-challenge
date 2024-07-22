@@ -40,6 +40,19 @@ public class findPrimeNumbersTesting {
     }
 
     @Test
+    public void testFindPrimeNumbersCapitalLetters() {
+        try {
+            String sequence = "ABC";
+            String numbers = Main.findPrimeNumbers(sequence);
+
+        } catch(Exception e) {
+            assertEquals("Sequence should not contain letters", e.getMessage());
+
+        }
+
+    }
+
+    @Test
     public void testFindPrimeNumbersBlankSpace() {
         try {
             String sequence = "1 2 3";

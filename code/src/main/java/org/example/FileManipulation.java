@@ -16,6 +16,11 @@ public class FileManipulation {
         br1 = new BufferedReader(new FileReader(filename));
     }
 
+    /**
+     * Used to insert numbers uniquely into the file
+     * @param s - string to be found
+     * @return true or false based on uniqueness
+     */
     public boolean insertUnique(String s){
         try {
             String line = br.readLine();
@@ -32,6 +37,10 @@ public class FileManipulation {
         return true;
     }
 
+    /**
+     * Used to load the previous results from the file
+     * @param a - arraylist to add strings to
+     */
     public void loadResults(ArrayList<String> a){
         try {
             String line = br1.readLine();
